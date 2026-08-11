@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function openLogin() {
 
+     window.location.href = "login.html";
+     
     const modal = document.getElementById("loginModal");
 
     modal.classList.add("show");
