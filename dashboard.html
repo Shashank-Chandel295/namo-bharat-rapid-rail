@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>Dashboard | Namo Bharat</title>
+
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="dashboard">
+
+
+
+<!-- SIDEBAR -->
+
+
+<aside class="sidebar">
+
+
+<div class="dash-logo">
+
+
+<div class="logo-icon">
+
+<i class="fa-solid fa-train"></i>
+
+</div>
+
+
+<div>
+
+<h3 id="app-title">
+NAMO BHARAT
+</h3>
+
+<span id="app-subtitle">
+Rapid Rail
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<ul class="menu">
+
+
+<li class="active">
+
+<i class="fa-solid fa-house"></i>
+
+<span id="dashboard-text">
+Dashboard
+</span>
+
+</li>
+
+
+<li>
+
+<i class="fa-solid fa-ticket"></i>
+
+<span id="book-text">
+Book Ticket
+</span>
+
+</li>
+
+
+
+<li
+    onclick="window.location.href='route.html'"
+    style="cursor:pointer;">
+
+    <i class="fa-solid fa-route"></i>
+
+    <span id="route-text">
+        Routes
+    </span>
+
+</li>
+
+
+<li>
+
+<i class="fa-solid fa-clock"></i>
+
+<span id="schedule-text">
+Schedule
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-receipt"></i>
+
+<span id="ticket-text">
+My Tickets
+</span>
+
+</li>
+
+
+
+<li>
+
+<i class="fa-solid fa-user"></i>
+
+<span id="profile-text">
+Profile
+</span>
+
+</li>
+
+
+
+</ul>
+
+
+
+
+
+
+
+<button class="logout-btn"
+onclick="logoutUser()">
+
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+
+Logout
+
+
+</button>
+
+
+
+</aside>
+
+
+
+
+
+
+
+
+<!-- MAIN AREA -->
+
+
+<main class="dashboard-main">
+
+    <button id="menu-toggle">
+        ☰
+    </button>
+
+    <button id="theme-toggle">
+        🌙 Dark Mode
+    </button>
+
+    <button onclick="changeLanguage()">
+        🌐 हिंदी / English
+    </button>
+
+    <!-- baaki dashboard code -->
+
+
+<header class="dashboard-header">
+
+
+
+<div>
+
+
+<h1>
+
+Good Morning, <span id="userName">
+
+User
+
+</span> 👋
+
+</h1>
+
+
+<p id="welcome-text">
+
+Welcome back to Namo Bharat Rapid Rail.
+
+</p>
+
+
+<!-- NOTIFICATION BUTTON -->
+
+<div class="notification-area">
+
+    <button id="notification-btn">
+
+        <i class="fa-solid fa-bell"></i>
+
+        <span id="notification-count">
+            3
+        </span>
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- NOTIFICATION PANEL -->
+
+<div id="notification-panel"
+     class="notification-panel">
+
+
+    <div class="notification-header">
+
+        <h3>
+            Notifications
+        </h3>
+
+
+        <button id="clear-notifications">
+
+            Mark All Read
+
+        </button>
+
+    </div>
+
+
+
+    <!-- Notification 1 -->
+
+    <div class="notification-item">
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-ticket"></i>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Ticket Confirmed
+            </strong>
+
+            <p>
+                Your Delhi → Meerut ticket is confirmed.
+            </p>
+
+            <small>
+                Just now
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Notification 2 -->
+
+    <div class="notification-item">
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-train"></i>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Train Update
+            </strong>
+
+            <p>
+                Namo Bharat train is running on time.
+            </p>
+
+            <small>
+                10 minutes ago
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Notification 3 -->
+
+    <div class="notification-item">
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Travel Reminder
+            </strong>
+
+            <p>
+                Your journey is scheduled today.
+            </p>
+
+            <small>
+                30 minutes ago
+            </small>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="user-box">
+
+
+<div class="user-avatar">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+
+
+<div>
+
+<strong id="userMobile">
+
+Mobile
+
+</strong>
+
+
+<span>
+
+Passenger
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<!-- STAT CARDS -->
+
+
+<section class="stats">
+
+
+
+<div class="stat-card">
+
+
+<div>
+
+<i class="fa-solid fa-ticket"></i>
+
+</div>
+
+
+<h2>
+
+03
+
+</h2>
+
+
+<p>
+
+Total Tickets
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="stat-card">
+
+
+<div>
+
+<i class="fa-solid fa-route"></i>
+
+</div>
+
+
+<h2>
+
+08
+
+</h2>
+
+
+<p>
+
+Total Journeys
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="stat-card">
+
+
+<div>
+
+<i class="fa-solid fa-wallet"></i>
+
+</div>
+
+
+<h2>
+
+₹450
+
+</h2>
+
+
+<p>
+
+Wallet Balance
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- UPCOMING JOURNEY -->
+
+
+<section class="journey-card">
+
+
+
+<div class="journey-title">
+
+
+<h2>
+
+Upcoming Journey 🚆
+
+</h2>
+
+
+<span>
+
+Confirmed
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="journey-route">
+
+
+
+<div>
+
+
+<strong>
+
+New Ashok Nagar
+
+</strong>
+
+
+<p>
+
+Delhi
+
+</p>
+
+
+</div>
+
+
+
+
+
+<i class="fa-solid fa-arrow-right"></i>
+
+
+
+
+
+
+<div>
+
+
+<strong>
+
+Meerut
+
+</strong>
+
+
+<p>
+
+Uttar Pradesh
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="journey-details">
+
+
+
+<div>
+
+<i class="fa-solid fa-calendar"></i>
+
+10 August 2026
+
+</div>
+
+
+
+<div>
+
+<i class="fa-solid fa-clock"></i>
+
+09:30 AM
+
+</div>
+
+
+
+
+<div>
+
+<i class="fa-solid fa-chair"></i>
+
+Premium
+
+</div>
+
+
+
+<button>
+
+View Ticket
+
+</button>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- QUICK ACTION -->
+
+
+<h2 class="section-title">
+
+Quick Actions
+
+</h2>
+
+
+
+
+
+<section class="quick-grid">
+
+
+
+<div class="quick-card">
+
+
+<i class="fa-solid fa-ticket"></i>
+
+
+<h3 id="quick-book-text">
+
+<span id="book-text">
+Book Ticket
+
+</span> 
+
+</h3>
+
+
+<p>
+
+Plan your journey
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="quick-card">
+
+
+<i class="fa-solid fa-qrcode"></i>
+
+
+<h3 id="qr-text">
+
+QR Ticket
+
+</h3>
+
+
+<p>
+
+Show digital ticket
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="quick-card">
+
+
+<i class="fa-solid fa-map-location-dot"></i>
+
+
+<h3 id="find-route-text">
+
+Find Route
+
+</h3>
+
+
+<p>
+
+Check fare
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="quick-card">
+
+
+<i class="fa-solid fa-clock"></i>
+
+
+<h3 id="quick-schedule-text">
+
+Schedule
+
+</h3>
+
+<p>
+
+Live timing
+
+</p>
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- RECENT TICKETS -->
+
+
+<h2 class="section-title">
+
+Recent Tickets
+
+</h2>
+
+
+
+
+
+<section class="recent-ticket">
+
+
+<div>
+
+
+<i class="fa-solid fa-train"></i>
+
+
+</div>
+
+
+
+<div>
+
+
+<h3>
+
+Delhi → Meerut
+
+</h3>
+
+
+<p>
+
+Ticket ID: NBR123456
+
+</p>
+
+
+</div>
+
+
+
+<span>
+
+Completed
+
+</span>
+
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+// LOAD USER DATA
+
+
+let name =
+localStorage.getItem("namoUserName");
+
+
+let mobile =
+localStorage.getItem("namoUserMobile");
+
+
+
+if(name){
+
+
+document.getElementById("userName")
+.innerText=name;
+
+
+}
+
+
+
+if(mobile){
+
+
+document.getElementById("userMobile")
+.innerText=mobile;
+
+
+}
+
+
+
+
+
+
+
+// LOGOUT
+
+
+function logoutUser(){
+
+
+localStorage.clear();
+
+
+window.location.href="login.html";
+
+
+}
+
+
+
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (menuToggle && sidebar) {
+
+        menuToggle.addEventListener("click", function () {
+
+            sidebar.classList.toggle("active");
+
+        });
+
+    }
+
+});
+
+</script>
+
+
+
+<script src="js/theme.js"></script>
+
+<script src="js/language.js"></script>
+
+<script src="js/mobile.js"></script>
+
+<script src="js/notification.js"></script>
+
+</body>
+
+</html>

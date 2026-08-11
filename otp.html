@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>OTP Verification | Namo Bharat</title>
+
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/auth.css">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+
+.otp-box-container{
+
+display:flex;
+
+justify-content:center;
+
+gap:12px;
+
+margin:30px 0;
+
+}
+
+
+
+.otp-input{
+
+width:48px;
+
+height:55px;
+
+border:1px solid #d9e0ea;
+
+border-radius:12px;
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:700;
+
+outline:none;
+
+}
+
+
+
+.otp-input:focus{
+
+border-color:#006cff;
+
+box-shadow:
+0 0 0 4px rgba(0,108,255,.1);
+
+}
+
+
+
+.timer-box{
+
+text-align:center;
+
+margin-top:20px;
+
+font-size:13px;
+
+color:#777;
+
+}
+
+
+
+.timer-box span{
+
+color:#006cff;
+
+font-weight:700;
+
+}
+
+
+
+.resend-btn{
+
+border:none;
+
+background:none;
+
+color:#006cff;
+
+font-weight:700;
+
+cursor:pointer;
+
+margin-left:5px;
+
+}
+
+
+
+.verify-icon{
+
+width:70px;
+
+height:70px;
+
+background:#eaf4ff;
+
+color:#006cff;
+
+border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+margin:auto;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="login-page">
+
+
+
+<a href="login.html" class="back-home">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back to Login
+
+</a>
+
+
+
+
+
+<div class="login-container">
+
+
+
+<div class="verify-icon">
+
+<i class="fa-solid fa-mobile-screen-button"></i>
+
+</div>
+
+
+
+
+
+<div class="login-heading">
+
+
+<h1>
+
+Verify OTP 🔢
+
+</h1>
+
+
+<p>
+
+Enter the 6 digit OTP sent to your mobile number.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<form id="otpForm">
+
+
+
+
+
+<div class="otp-box-container">
+
+
+<input class="otp-input"
+maxlength="1"
+type="text">
+
+
+<input class="otp-input"
+maxlength="1"
+type="text">
+
+
+<input class="otp-input"
+maxlength="1"
+type="text">
+
+
+<input class="otp-input"
+maxlength="1"
+type="text">
+
+
+<input class="otp-input"
+maxlength="1"
+type="text">
+
+
+<input class="otp-input"
+maxlength="1"
+type="text">
+
+
+
+</div>
+
+
+
+
+
+
+
+<button
+
+class="login-main-btn"
+
+type="submit">
+
+
+Verify OTP
+
+<i class="fa-solid fa-check"></i>
+
+
+</button>
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+<div class="timer-box">
+
+
+Resend OTP in
+
+<span id="timer">
+
+30
+
+</span>
+
+seconds
+
+
+
+<button
+
+class="resend-btn"
+
+id="resendBtn"
+
+disabled>
+
+
+Resend
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="secure-login">
+
+
+<i class="fa-solid fa-shield-halved"></i>
+
+
+OTP verification keeps your account safe.
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="login-info">
+
+
+<div class="info-content">
+
+
+
+<div class="info-badge">
+
+
+<i class="fa-solid fa-fingerprint"></i>
+
+
+SECURE VERIFICATION
+
+
+</div>
+
+
+
+
+
+
+<h2>
+
+
+One Step
+
+<br>
+
+<span>Closer</span>
+
+
+</h2>
+
+
+
+
+
+
+<p>
+
+
+Verify your identity securely and continue
+your Namo Bharat smart travel experience.
+
+
+</p>
+
+
+
+
+
+
+
+<div class="info-features">
+
+
+<div>
+
+<i class="fa-solid fa-lock"></i>
+
+<span>
+Protected
+</span>
+
+</div>
+
+
+
+<div>
+
+<i class="fa-solid fa-user-check"></i>
+
+<span>
+Verified
+</span>
+
+</div>
+
+
+
+<div>
+
+<i class="fa-solid fa-ticket"></i>
+
+<span>
+Digital Access
+</span>
+
+</div>
+
+
+
+<div>
+
+<i class="fa-solid fa-train"></i>
+
+<span>
+Rapid Rail
+</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="login-train">
+
+<i class="fa-solid fa-train"></i>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+// OTP AUTO MOVE
+
+
+const inputs =
+document.querySelectorAll(".otp-input");
+
+
+
+inputs.forEach((input,index)=>{
+
+
+input.addEventListener("input",()=>{
+
+
+if(input.value.length===1 && index < inputs.length-1){
+
+
+inputs[index+1].focus();
+
+
+}
+
+
+});
+
+
+input.addEventListener("keydown",(e)=>{
+
+
+if(e.key==="Backspace" && input.value==="" && index>0){
+
+
+inputs[index-1].focus();
+
+
+}
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+// TIMER
+
+
+let time = 30;
+
+
+let timerElement =
+document.getElementById("timer");
+
+
+let resend =
+document.getElementById("resendBtn");
+
+
+
+
+let countdown =
+setInterval(()=>{
+
+
+time--;
+
+
+timerElement.innerText=time;
+
+
+
+if(time<=0){
+
+
+clearInterval(countdown);
+
+
+resend.disabled=false;
+
+
+timerElement.innerText="0";
+
+
+}
+
+
+},1000);
+
+
+
+
+
+
+
+
+// RESEND OTP
+
+
+resend.addEventListener("click",()=>{
+
+
+alert("OTP sent again!");
+
+
+time=30;
+
+
+resend.disabled=true;
+
+
+countdown =
+setInterval(()=>{
+
+
+time--;
+
+timerElement.innerText=time;
+
+
+if(time<=0){
+
+clearInterval(countdown);
+
+resend.disabled=false;
+
+}
+
+},1000);
+
+
+
+});
+
+
+
+
+
+
+
+
+// VERIFY OTP
+
+
+document
+.getElementById("otpForm")
+.addEventListener("submit",(e)=>{
+
+
+e.preventDefault();
+
+
+
+let otp="";
+
+
+inputs.forEach(input=>{
+
+
+otp += input.value;
+
+
+});
+
+
+
+
+
+if(otp.length!==6){
+
+
+alert("Please enter complete OTP");
+
+
+return;
+
+
+}
+
+
+
+
+alert("OTP Verified Successfully!");
+
+
+
+
+
+/*
+
+Aage hum yaha:
+
+Signup se aaye ho to dashboard/login
+
+Forgot password se aaye ho to reset-password
+
+ka flow add karenge.
+
+*/
+
+
+
+window.location.href="login.html";
+
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Payment | Namo Bharat
+    </title>
+
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background:
+            linear-gradient(
+                135deg,
+                #eef6ff,
+                #f8fbff
+            );
+
+        }
+
+
+        .payment-page {
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+
+        }
+
+
+        .back-btn {
+
+            display: block;
+
+            max-width: 950px;
+
+            margin: 0 auto 20px;
+
+            color: #006cff;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+        .payment-container {
+
+            max-width: 950px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+
+        }
+
+
+        .payment-card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            box-shadow:
+            0 15px 40px
+            rgba(0,0,0,.08);
+
+        }
+
+
+        .payment-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .payment-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 15px;
+
+            background: #eaf3ff;
+
+            color: #006cff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+        }
+
+
+        .payment-header h1 {
+
+            margin: 0;
+
+            color: #14213d;
+
+            font-size: 25px;
+
+        }
+
+
+        .payment-header p {
+
+            margin: 5px 0 0;
+
+            color: #777;
+
+        }
+
+
+        .summary-title {
+
+            color: #14213d;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .summary-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eee;
+
+            gap: 15px;
+
+        }
+
+
+        .summary-row span {
+
+            color: #777;
+
+        }
+
+
+        .summary-row strong {
+
+            color: #222;
+
+            text-align: right;
+
+        }
+
+
+        .total-box {
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            background: #eef7ff;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .total-box span {
+
+            color: #555;
+
+        }
+
+
+        .total-box strong {
+
+            color: #006cff;
+
+            font-size: 28px;
+
+        }
+
+
+        .payment-methods {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+
+        .method {
+
+            border: 2px solid #e3e3e3;
+
+            border-radius: 15px;
+
+            padding: 17px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            transition: .2s;
+
+        }
+
+
+        .method:hover {
+
+            border-color: #006cff;
+
+            background: #f5f9ff;
+
+        }
+
+
+        .method.active {
+
+            border-color: #006cff;
+
+            background: #eef6ff;
+
+        }
+
+
+        .method i {
+
+            font-size: 22px;
+
+            color: #006cff;
+
+            width: 30px;
+
+            text-align: center;
+
+        }
+
+
+        .method-info strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .method-info span {
+
+            font-size: 12px;
+
+            color: #777;
+
+        }
+
+
+        .pay-button {
+
+            width: 100%;
+
+            height: 55px;
+
+            margin-top: 25px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #006cff,
+                #00b7ff
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .pay-button:hover {
+
+            opacity: .9;
+
+        }
+
+
+        .pay-button:disabled {
+
+            opacity: .6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        .secure-payment {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        .selected-method {
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            color: #006cff;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        @media(max-width:750px) {
+
+            .payment-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .payment-page {
+
+                padding: 20px 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="payment-page">
+
+
+    <!-- BACK -->
+
+    <a href="booking.html"
+       class="back-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Booking
+
+    </a>
+
+
+
+    <div class="payment-container">
+
+
+        <!-- ================================= -->
+        <!-- BOOKING SUMMARY -->
+        <!-- ================================= -->
+
+        <div class="payment-card">
+
+
+            <div class="payment-header">
+
+                <div class="payment-icon">
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        Booking Summary
+                    </h1>
+
+                    <p>
+                        Namo Bharat Rapid Rail
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <h3 class="summary-title">
+
+                Journey Details
+
+            </h3>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    From
+                </span>
+
+                <strong id="payment-from">
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    To
+                </span>
+
+                <strong id="payment-to">
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    Journey Date
+                </span>
+
+                <strong id="payment-date">
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    Passengers
+                </span>
+
+                <strong id="payment-passengers">
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    Class
+                </span>
+
+                <strong id="payment-class">
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <div class="total-box">
+
+                <span>
+                    Total Fare
+                </span>
+
+                <strong id="payment-fare">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================= -->
+        <!-- PAYMENT METHODS -->
+        <!-- ================================= -->
+
+        <div class="payment-card">
+
+
+            <div class="payment-header">
+
+                <div class="payment-icon">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        Payment
+                    </h1>
+
+                    <p>
+                        Select payment method
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="payment-methods">
+
+
+                <!-- UPI -->
+
+                <div class="method active"
+                     onclick="selectMethod(this, 'UPI')">
+
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+
+                    <div class="method-info">
+
+                        <strong>
+                            UPI
+                        </strong>
+
+                        <span>
+                            Google Pay / PhonePe / Paytm
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CARD -->
+
+                <div class="method"
+                     onclick="selectMethod(
+                        this,
+                        'Credit / Debit Card'
+                     )">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    <div class="method-info">
+
+                        <strong>
+                            Credit / Debit Card
+                        </strong>
+
+                        <span>
+                            Visa / Mastercard / RuPay
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- NET BANKING -->
+
+                <div class="method"
+                     onclick="selectMethod(
+                        this,
+                        'Net Banking'
+                     )">
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                    <div class="method-info">
+
+                        <strong>
+                            Net Banking
+                        </strong>
+
+                        <span>
+                            All major banks supported
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- WALLET -->
+
+                <div class="method"
+                     onclick="selectMethod(
+                        this,
+                        'Wallet'
+                     )">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                    <div class="method-info">
+
+                        <strong>
+                            Wallet
+                        </strong>
+
+                        <span>
+                            Namo Bharat Wallet
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="selected-method">
+
+                Selected:
+                <span id="selected-method">
+                    UPI
+                </span>
+
+            </div>
+
+
+
+            <!-- PAY BUTTON -->
+
+            <button
+                class="pay-button"
+                id="pay-button"
+                onclick="makePayment()">
+
+                <i class="fa-solid fa-lock"></i>
+
+                Pay
+
+                <span id="pay-amount">
+                    ₹0
+                </span>
+
+            </button>
+
+
+
+            <div class="secure-payment">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Secure Demo Payment
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+// ========================================
+// LOAD BOOKING DATA
+// ========================================
+
+let bookingData =
+    JSON.parse(
+        localStorage.getItem(
+            "bookingData"
+        )
+    );
+
+
+// ========================================
+// DEFAULT DATA
+// ========================================
+
+if (!bookingData) {
+
+    bookingData = {
+
+        from: "New Ashok Nagar",
+
+        to: "Meerut",
+
+        date: "10 August 2026",
+
+        passengers: 1,
+
+        className: "Premium",
+
+        fare: 80
+
+    };
+
+}
+
+
+// ========================================
+// DISPLAY BOOKING DATA
+// ========================================
+
+document.getElementById(
+    "payment-from"
+).innerText =
+    bookingData.from;
+
+
+document.getElementById(
+    "payment-to"
+).innerText =
+    bookingData.to;
+
+
+document.getElementById(
+    "payment-date"
+).innerText =
+    bookingData.date;
+
+
+document.getElementById(
+    "payment-passengers"
+).innerText =
+    bookingData.passengers;
+
+
+document.getElementById(
+    "payment-class"
+).innerText =
+    bookingData.className;
+
+
+document.getElementById(
+    "payment-fare"
+).innerText =
+    "₹" + bookingData.fare;
+
+
+document.getElementById(
+    "pay-amount"
+).innerText =
+    "₹" + bookingData.fare;
+
+
+// ========================================
+// PAYMENT METHOD
+// ========================================
+
+let selectedPaymentMethod =
+    "UPI";
+
+
+function selectMethod(
+    element,
+    method
+) {
+
+
+    // Remove active class
+
+    document
+        .querySelectorAll(".method")
+        .forEach(function(item) {
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    // Add active class
+
+    element.classList.add(
+        "active"
+    );
+
+
+    // Save selected method
+
+    selectedPaymentMethod =
+        method;
+
+
+    document.getElementById(
+        "selected-method"
+    ).innerText =
+        method;
+
+}
+
+
+// ========================================
+// MAKE PAYMENT
+// ========================================
+
+function makePayment() {
+
+
+    let fare =
+        Number(
+            bookingData.fare
+        );
+
+
+    if (!fare || fare <= 0) {
+
+        alert(
+            "Invalid payment amount."
+        );
+
+        return;
+
+    }
+
+
+    // Prevent multiple clicks
+
+    let payButton =
+        document.getElementById(
+            "pay-button"
+        );
+
+
+    payButton.disabled =
+        true;
+
+
+    payButton.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+
+
+    // Save payment data
+
+    let paymentData = {
+
+        amount: fare,
+
+        method:
+            selectedPaymentMethod,
+
+        status: "Success",
+
+        transactionId:
+            "TXN" +
+            Math.floor(
+                Math.random() *
+                900000 +
+                100000
+            ),
+
+        date:
+            new Date().toLocaleString()
+
+    };
+
+
+    localStorage.setItem(
+
+        "paymentData",
+
+        JSON.stringify(
+            paymentData
+        )
+
+    );
+
+
+    // Save booking status
+
+    bookingData.paymentStatus =
+        "Paid";
+
+
+    bookingData.paymentMethod =
+        selectedPaymentMethod;
+
+
+    bookingData.transactionId =
+        paymentData.transactionId;
+
+
+    localStorage.setItem(
+
+        "bookingData",
+
+        JSON.stringify(
+            bookingData
+        )
+
+    );
+
+
+    // Demo payment delay
+
+    setTimeout(function() {
+
+
+        window.location.href =
+            "payment-success.html";
+
+
+    }, 1200);
+
+}
+
+
+</script>
+
+
+
+<!-- LOGIN SESSION -->
+
+<script src="js/auth.js"></script>
+
+<script>
+
+    if (
+        typeof checkLogin ===
+        "function"
+    ) {
+
+        checkLogin();
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

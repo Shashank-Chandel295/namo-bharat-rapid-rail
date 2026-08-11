@@ -1,0 +1,1064 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Settings | Namo Bharat
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f8fc;
+
+        }
+
+
+        .settings-page {
+
+            min-height: 100vh;
+
+            padding: 30px 20px;
+
+        }
+
+
+        .settings-container {
+
+            max-width: 900px;
+
+            margin: auto;
+
+        }
+
+
+        /* HEADER */
+
+        .settings-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .settings-header h1 {
+
+            margin: 0;
+
+            color: #14213d;
+
+        }
+
+
+        .settings-header p {
+
+            color: #777;
+
+            margin-top: 8px;
+
+        }
+
+
+        .back-btn {
+
+            text-decoration: none;
+
+            background: #006cff;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* CARD */
+
+        .settings-card {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.08);
+
+        }
+
+
+        /* SECTION */
+
+        .settings-section {
+
+            padding: 22px 0;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+
+        .settings-section:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .section-heading i {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            background: #eaf3ff;
+
+            color: #006cff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .section-heading h2 {
+
+            margin: 0;
+
+            color: #14213d;
+
+            font-size: 18px;
+
+        }
+
+
+        .section-heading p {
+
+            margin: 4px 0 0;
+
+            color: #888;
+
+            font-size: 12px;
+
+        }
+
+
+        /* SETTING ROW */
+
+        .setting-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background: #f8fafc;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .setting-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+        }
+
+
+        .setting-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 10px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #006cff;
+
+        }
+
+
+        .setting-info strong {
+
+            display: block;
+
+            color: #333;
+
+            font-size: 14px;
+
+        }
+
+
+        .setting-info span {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: #888;
+
+            font-size: 12px;
+
+        }
+
+
+        /* SWITCH */
+
+        .switch {
+
+            position: relative;
+
+            width: 48px;
+
+            height: 26px;
+
+        }
+
+
+        .switch input {
+
+            display: none;
+
+        }
+
+
+        .slider {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: #ccc;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+        }
+
+
+        .slider:before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 20px;
+
+            height: 20px;
+
+            left: 3px;
+
+            top: 3px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            transition: .3s;
+
+        }
+
+
+        .switch input:checked + .slider {
+
+            background: #006cff;
+
+        }
+
+
+        .switch input:checked + .slider:before {
+
+            transform: translateX(22px);
+
+        }
+
+
+        /* SELECT */
+
+        .language-select {
+
+            height: 42px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            padding: 0 12px;
+
+            outline: none;
+
+            background: white;
+
+        }
+
+
+        /* SAVE BUTTON */
+
+        .save-settings {
+
+            width: 100%;
+
+            height: 52px;
+
+            margin-top: 25px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #006cff,
+                    #00b7ff
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .save-settings:hover {
+
+            opacity: .9;
+
+        }
+
+
+        /* MESSAGE */
+
+        #saveMessage {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            background: #e7f8ef;
+
+            color: #008a43;
+
+            font-weight: bold;
+
+            font-size: 13px;
+
+        }
+
+
+        @media(max-width:650px) {
+
+            .settings-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+
+            }
+
+
+            .settings-card {
+
+                padding: 20px;
+
+            }
+
+
+            .setting-row {
+
+                gap: 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="settings-page">
+
+
+    <div class="settings-container">
+
+
+        <!-- HEADER -->
+
+        <div class="settings-header">
+
+            <div>
+
+                <h1>
+                    Settings ⚙️
+                </h1>
+
+                <p>
+                    Manage your Namo Bharat preferences
+                </p>
+
+            </div>
+
+
+            <a
+                href="profile.html"
+                class="back-btn">
+
+                <i class="fa-solid fa-user"></i>
+
+                Profile
+
+            </a>
+
+        </div>
+
+
+
+        <div class="settings-card">
+
+
+            <!-- NOTIFICATIONS -->
+
+            <div class="settings-section">
+
+
+                <div class="section-heading">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <div>
+
+                        <h2>
+                            Notifications
+                        </h2>
+
+                        <p>
+                            Manage travel alerts and updates
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PUSH -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+
+                            <i class="fa-solid fa-bell"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Push Notifications
+                            </strong>
+
+                            <span>
+                                Receive ticket and train updates
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="pushNotifications"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Email Notifications
+                            </strong>
+
+                            <span>
+                                Receive booking confirmations by email
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="emailNotifications"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- APPEARANCE -->
+
+            <div class="settings-section">
+
+
+                <div class="section-heading">
+
+                    <i class="fa-solid fa-palette"></i>
+
+                    <div>
+
+                        <h2>
+                            Appearance
+                        </h2>
+
+                        <p>
+                            Customize your dashboard appearance
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DARK MODE -->
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+
+                            <i class="fa-solid fa-moon"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Dark Mode
+                            </strong>
+
+                            <span>
+                                Use dark theme across the dashboard
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="darkMode">
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- LANGUAGE -->
+
+            <div class="settings-section">
+
+
+                <div class="section-heading">
+
+                    <i class="fa-solid fa-language"></i>
+
+                    <div>
+
+                        <h2>
+                            Language
+                        </h2>
+
+                        <p>
+                            Select your preferred language
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+
+                            <i class="fa-solid fa-globe"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                App Language
+                            </strong>
+
+                            <span>
+                                Choose English or Hindi
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <select
+                        id="language"
+                        class="language-select">
+
+                        <option value="en">
+                            English
+                        </option>
+
+                        <option value="hi">
+                            हिंदी
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="settings-section">
+
+
+                <div class="section-heading">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <div>
+
+                        <h2>
+                            Security
+                        </h2>
+
+                        <p>
+                            Protect your account
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Change Password
+                            </strong>
+
+                            <span>
+                                Update your account password
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        onclick="changePassword()"
+                        style="
+                        border:none;
+                        background:#eaf3ff;
+                        color:#006cff;
+                        padding:10px 15px;
+                        border-radius:10px;
+                        cursor:pointer;
+                        font-weight:bold;
+                        ">
+
+                        Change
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SAVE -->
+
+            <button
+                class="save-settings"
+                onclick="saveSettings()">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Settings
+
+            </button>
+
+
+            <div id="saveMessage">
+
+                Settings saved successfully! ✅
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+// ========================================
+// LOAD SETTINGS
+// ========================================
+
+
+let push =
+    localStorage.getItem(
+        "namoPushNotifications"
+    );
+
+
+let email =
+    localStorage.getItem(
+        "namoEmailNotifications"
+    );
+
+
+let dark =
+    localStorage.getItem(
+        "namoDarkMode"
+    );
+
+
+let language =
+    localStorage.getItem(
+        "namoLanguage"
+    );
+
+
+
+if (push !== null) {
+
+    document.getElementById(
+        "pushNotifications"
+    ).checked = push === "true";
+
+}
+
+
+
+if (email !== null) {
+
+    document.getElementById(
+        "emailNotifications"
+    ).checked = email === "true";
+
+}
+
+
+
+if (dark !== null) {
+
+    document.getElementById(
+        "darkMode"
+    ).checked = dark === "true";
+
+}
+
+
+
+if (language) {
+
+    document.getElementById(
+        "language"
+    ).value = language;
+
+}
+
+
+
+// ========================================
+// SAVE SETTINGS
+// ========================================
+
+
+function saveSettings() {
+
+
+    let pushValue =
+        document.getElementById(
+            "pushNotifications"
+        ).checked;
+
+
+    let emailValue =
+        document.getElementById(
+            "emailNotifications"
+        ).checked;
+
+
+    let darkValue =
+        document.getElementById(
+            "darkMode"
+        ).checked;
+
+
+    let languageValue =
+        document.getElementById(
+            "language"
+        ).value;
+
+
+
+    localStorage.setItem(
+        "namoPushNotifications",
+        pushValue
+    );
+
+
+    localStorage.setItem(
+        "namoEmailNotifications",
+        emailValue
+    );
+
+
+    localStorage.setItem(
+        "namoDarkMode",
+        darkValue
+    );
+
+
+    localStorage.setItem(
+        "namoLanguage",
+        languageValue
+    );
+
+
+
+    // DARK MODE
+
+    if (darkValue) {
+
+        document.body.style.background =
+            "#101827";
+
+        document.querySelector(
+            ".settings-card"
+        ).style.background =
+            "#182235";
+
+    }
+
+    else {
+
+        document.body.style.background =
+            "#f4f8fc";
+
+        document.querySelector(
+            ".settings-card"
+        ).style.background =
+            "white";
+
+    }
+
+
+
+    let message =
+        document.getElementById(
+            "saveMessage"
+        );
+
+
+    message.style.display =
+        "block";
+
+
+    setTimeout(
+        function() {
+
+            message.style.display =
+                "none";
+
+        },
+        2500
+    );
+
+}
+
+
+
+// ========================================
+// CHANGE PASSWORD
+// ========================================
+
+
+function changePassword() {
+
+    window.location.href =
+        "change-password.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

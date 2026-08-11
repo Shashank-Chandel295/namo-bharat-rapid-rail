@@ -1,0 +1,1093 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        My Profile | Namo Bharat
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f8fc;
+
+        }
+
+
+        .profile-page {
+
+            min-height: 100vh;
+
+            padding: 30px 20px;
+
+        }
+
+
+        .profile-container {
+
+            max-width: 900px;
+
+            margin: auto;
+
+        }
+
+
+        /* HEADER */
+
+        .profile-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .profile-header h1 {
+
+            margin: 0;
+
+            color: #14213d;
+
+        }
+
+
+        .profile-header p {
+
+            color: #777;
+
+        }
+
+
+        .dashboard-btn {
+
+            text-decoration: none;
+
+            background: #006cff;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* PROFILE CARD */
+
+        .profile-card {
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.08);
+
+        }
+
+
+        /* TOP */
+
+        .profile-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding-bottom: 25px;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+
+        .profile-avatar {
+
+            width: 85px;
+
+            height: 85px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #006cff,
+                    #00b7ff
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 35px;
+
+        }
+
+
+        .profile-top h2 {
+
+            margin: 0 0 5px;
+
+            color: #14213d;
+
+        }
+
+
+        .profile-top p {
+
+            margin: 0;
+
+            color: #777;
+
+        }
+
+
+        /* FORM */
+
+        .profile-section {
+
+            margin-top: 30px;
+
+        }
+
+
+        .profile-section h3 {
+
+            color: #14213d;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        .input-box label {
+
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+            color: #555;
+
+        }
+
+
+        .input-box input {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            padding: 0 14px;
+
+            outline: none;
+
+            font-size: 14px;
+
+        }
+
+
+        .input-box input:focus {
+
+            border-color: #006cff;
+
+        }
+
+
+        .mobile-input {
+
+            background: #f3f5f8;
+
+            color: #777;
+
+        }
+
+
+        /* STATUS */
+
+        .status-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            height: 48px;
+
+            padding: 0 14px;
+
+            border-radius: 12px;
+
+            background: #e8f8ef;
+
+            color: #00a651;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+        }
+
+
+        /* SAVE */
+
+        .save-btn {
+
+            width: 100%;
+
+            height: 52px;
+
+            margin-top: 25px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #006cff,
+                    #00b7ff
+                );
+
+            color: white;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* STATS */
+
+        .account-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .stat {
+
+            background: #f5f9ff;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            text-align: center;
+
+        }
+
+
+        .stat i {
+
+            color: #006cff;
+
+            font-size: 25px;
+
+        }
+
+
+        .stat h2 {
+
+            margin: 8px 0 5px;
+
+            color: #14213d;
+
+        }
+
+
+        .stat p {
+
+            margin: 0;
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+
+        /* ACTIONS */
+
+        .profile-actions {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .action-btn {
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .password-btn {
+
+            background: #eef4ff;
+
+            color: #006cff;
+
+        }
+
+
+        .logout-btn {
+
+            background: #fff0f0;
+
+            color: #d93025;
+
+        }
+
+
+        /* SECURITY */
+
+        .security-box {
+
+            margin-top: 25px;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background: #fff8e8;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .security-box i {
+
+            color: #e69b00;
+
+            font-size: 24px;
+
+        }
+
+
+        .security-box strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .security-box span {
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        @media(max-width:700px) {
+
+            .profile-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .account-stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .profile-actions {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .profile-card {
+
+                padding: 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="profile-page">
+
+
+    <div class="profile-container">
+
+
+        <!-- HEADER -->
+
+        <div class="profile-header">
+
+            <div>
+
+                <h1>
+                    My Profile 👤
+                </h1>
+
+                <p>
+                    Manage your Namo Bharat account
+                </p>
+
+            </div>
+
+
+            <a
+                href="dashboard.html"
+                class="dashboard-btn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+
+
+        <!-- PROFILE CARD -->
+
+        <div class="profile-card">
+
+
+            <!-- USER -->
+
+            <div class="profile-top">
+
+
+                <div class="profile-avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2 id="profile-name">
+                        Shashank
+                    </h2>
+
+                    <p>
+                        Namo Bharat User
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="profile-section">
+
+                <h3>
+                    Personal Information
+                </h3>
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="input-box">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            value="Shashank Chandel">
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="input-box">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            value="palshashank295@email.com">
+
+                    </div>
+
+
+
+                    <!-- MOBILE -->
+
+                    <div class="input-box">
+
+                        <label>
+                            Mobile
+                        </label>
+
+                        <input
+                            type="text"
+                            id="mobile"
+                            class="mobile-input"
+                            value="9149220011"
+                            disabled>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="input-box">
+
+                        <label>
+                            Account Status
+                        </label>
+
+                        <div class="status-box">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Active
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <button
+                    class="save-btn"
+                    onclick="saveProfile()">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Profile
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ACCOUNT STATISTICS -->
+
+            <div class="account-stats">
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                    <h2 id="total-tickets">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Tickets
+                    </p>
+
+                </div>
+
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <h2>
+                        08
+                    </h2>
+
+                    <p>
+                        Total Journeys
+                    </p>
+
+                </div>
+
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                    <h2>
+                        ₹450
+                    </h2>
+
+                    <p>
+                        Wallet Balance
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="profile-actions">
+
+                <button
+    class="action-btn password-btn"
+    onclick="openSettings()">
+
+    <i class="fa-solid fa-gear"></i>
+
+    Settings
+
+</button>
+
+
+                <button
+                    class="action-btn password-btn"
+                    onclick="changePassword()">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Change Password
+
+                </button>
+
+
+
+            
+<button
+    class="action-btn password-btn"
+    id="editProfileBtn"
+    onclick="editProfile()">
+
+    <i class="fa-solid fa-pen"></i>
+
+    Edit Profile
+
+</button>
+
+
+
+
+                <button
+                    class="action-btn logout-btn"
+                    onclick="logoutUser()">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="security-box">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <div>
+
+                    <strong>
+                        Account Security
+                    </strong>
+
+                    <span>
+                        Your account information is stored
+                        securely in this browser.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+// ========================================
+// LOAD USER DATA
+// ========================================
+
+
+let savedName =
+    localStorage.getItem("namoUserName");
+
+
+let savedMobile =
+    localStorage.getItem("namoUserMobile");
+
+
+let savedEmail =
+    localStorage.getItem("namoUserEmail");
+
+
+
+if (savedName) {
+
+    document.getElementById("name")
+        .value = savedName;
+
+    document.getElementById("profile-name")
+        .innerText = savedName;
+
+}
+
+
+
+if (savedMobile) {
+
+    document.getElementById("mobile")
+        .value = savedMobile;
+
+}
+
+
+
+if (savedEmail) {
+
+    document.getElementById("email")
+        .value = savedEmail;
+
+}
+
+
+
+// ========================================
+// TICKET COUNT
+// ========================================
+
+
+let ticketHistory =
+    JSON.parse(
+        localStorage.getItem("ticketHistory")
+    ) || [];
+
+
+document.getElementById("total-tickets")
+    .innerText =
+    ticketHistory.length;
+
+
+
+// ========================================
+// SAVE PROFILE
+// ========================================
+
+
+function saveProfile() {
+
+
+    let name =
+        document.getElementById("name")
+            .value
+            .trim();
+
+
+    let email =
+        document.getElementById("email")
+            .value
+            .trim();
+
+
+
+    if (name === "") {
+
+        alert(
+            "Please enter your full name."
+        );
+
+        return;
+
+    }
+
+
+
+    localStorage.setItem(
+        "namoUserName",
+        name
+    );
+
+
+    localStorage.setItem(
+        "namoUserEmail",
+        email
+    );
+
+
+    document.getElementById("profile-name")
+        .innerText = name;
+
+
+
+    alert(
+        "Profile updated successfully! ✅"
+    );
+
+}
+
+
+
+// ========================================
+// EDIT PROFILE
+// ========================================
+
+
+
+// ========================================
+// EDIT PROFILE
+// ========================================
+
+let editMode = false;
+
+
+function editProfile() {
+
+    let nameInput =
+        document.getElementById("name");
+
+    let emailInput =
+        document.getElementById("email");
+
+    let editButton =
+        document.getElementById(
+            "editProfileBtn"
+        );
+
+
+    // ==============================
+    // ENTER EDIT MODE
+    // ==============================
+
+    if (!editMode) {
+
+        editMode = true;
+
+
+        nameInput.disabled = false;
+
+        emailInput.disabled = false;
+
+
+        nameInput.focus();
+
+
+        editButton.innerHTML =
+            '<i class="fa-solid fa-check"></i> Done';
+
+    }
+
+
+    // ==============================
+    // EXIT EDIT MODE
+    // ==============================
+
+    else {
+
+        editMode = false;
+
+
+        nameInput.disabled = false;
+
+        emailInput.disabled = false;
+
+
+        editButton.innerHTML =
+            '<i class="fa-solid fa-pen"></i> Edit Profile';
+
+
+        saveProfile();
+
+    }
+
+}
+
+
+
+// ========================================
+// CHANGE PASSWORD
+// ========================================
+
+
+function changePassword() {
+
+    window.location.href =
+        "change-password.html";
+
+}
+
+
+
+// ========================================
+// LOGOUT
+// ========================================
+
+
+function logoutUser() {
+
+    localStorage.removeItem(
+        "namoUserName"
+    );
+
+    localStorage.removeItem(
+        "namoUserMobile"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+function openSettings() {
+
+    window.location.href =
+        "settings.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

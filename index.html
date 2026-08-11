@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Namo Bharat | Rapid Rail</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-train"></i>
+        </div>
+
+        <div>
+            <h2>NAMO BHARAT</h2>
+            <span>Rapid Rail</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#booking">Book Ticket</a>
+        <a href="#routes">Routes</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-right">
+
+        <button class="language-btn" onclick="changeLanguage()">
+            <i class="fa-solid fa-language"></i>
+            EN
+        </button>
+
+        <button class="login-btn" onclick="openLogin()">
+            <i class="fa-solid fa-user"></i>
+            Login
+        </button>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            <span class="live-dot"></span>
+            India's Next Generation Rapid Rail
+        </div>
+
+        <h1>
+            Travel Faster.<br>
+            <span>Travel Smarter.</span>
+        </h1>
+
+        <p>
+            Experience India's modern regional rail network with
+            Namo Bharat Rapid Rail.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn"
+                    onclick="scrollToBooking()">
+
+                <i class="fa-solid fa-ticket"></i>
+                Book Your Journey
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="scrollToRoutes()">
+
+                <i class="fa-solid fa-route"></i>
+                Explore Routes
+            </button>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>160+</strong>
+                <span>KM/H Speed</span>
+            </div>
+
+            <div>
+                <strong>17</strong>
+                <span>Stations</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Electric</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TRAIN VISUAL -->
+
+    <div class="hero-train">
+
+        <div class="glow"></div>
+
+        <div class="train-card">
+
+            <div class="train-front">
+                <div class="train-window"></div>
+                <div class="train-light"></div>
+            </div>
+
+            <div class="train-body">
+
+                <div class="train-line"></div>
+
+                <div class="train-window-row">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="train-name">
+                    NAMO BHARAT
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUICK ACTIONS ================= -->
+
+<section class="quick-actions">
+
+    <div class="action-card" onclick="scrollToBooking()">
+
+        <div class="action-icon">
+            <i class="fa-solid fa-ticket"></i>
+        </div>
+
+        <div>
+            <h3>Book Ticket</h3>
+            <p>Reserve your journey</p>
+        </div>
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </div>
+
+
+    <div class="action-card" onclick="scrollToRoutes()">
+
+        <div class="action-icon">
+            <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+
+        <div>
+            <h3>Route & Fare</h3>
+            <p>Calculate your fare</p>
+        </div>
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </div>
+
+
+    <div class="action-card" onclick="scrollToSchedule()">
+
+        <div class="action-icon">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+
+        <div>
+            <h3>Train Schedule</h3>
+            <p>Check live timings</p>
+        </div>
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </div>
+
+
+    <div class="action-card">
+
+        <div class="action-icon">
+            <i class="fa-solid fa-location-crosshairs"></i>
+        </div>
+
+        <div>
+            <h3>Nearby Station</h3>
+            <p>Find stations near you</p>
+        </div>
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BOOKING ================= -->
+
+<section class="booking-section" id="booking">
+
+    <div class="section-heading">
+
+        <span>PLAN YOUR JOURNEY</span>
+
+        <h2>Where do you want to go?</h2>
+
+        <p>
+            Search routes, calculate fares and plan your journey
+            with Namo Bharat.
+        </p>
+
+    </div>
+
+
+    <div class="booking-box">
+
+        <div class="booking-tabs">
+
+            <button class="booking-tab active">
+                <i class="fa-solid fa-train"></i>
+                One Way
+            </button>
+
+            <button class="booking-tab">
+                <i class="fa-solid fa-repeat"></i>
+                Round Trip
+            </button>
+
+        </div>
+
+
+        <div class="booking-fields">
+
+            <div class="field">
+
+                <label>
+                    <i class="fa-solid fa-location-dot"></i>
+                    From
+                </label>
+
+                <select id="fromStation">
+
+                    <option value="">Select Station</option>
+
+                    <option>New Ashok Nagar</option>
+                    <option>Anand Vihar</option>
+                    <option>Sahibabad</option>
+                    <option>Ghaziabad</option>
+                    <option>Guldhar</option>
+                    <option>Duhai</option>
+                    <option>Murad Nagar</option>
+
+                </select>
+
+            </div>
+
+
+            <button class="swap-btn" onclick="swapStations()">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </button>
+
+
+            <div class="field">
+
+                <label>
+                    <i class="fa-solid fa-location-dot"></i>
+                    To
+                </label>
+
+                <select id="toStation">
+
+                    <option value="">Select Station</option>
+
+                    <option>New Ashok Nagar</option>
+                    <option>Anand Vihar</option>
+                    <option>Sahibabad</option>
+                    <option>Ghaziabad</option>
+                    <option>Guldhar</option>
+                    <option>Duhai</option>
+                    <option>Murad Nagar</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    <i class="fa-solid fa-calendar"></i>
+                    Date
+                </label>
+
+                <input type="date" id="journeyDate">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    <i class="fa-solid fa-users"></i>
+                    Passengers
+                </label>
+
+                <select id="passengers">
+
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                    <option value="4">4 Passengers</option>
+                    <option value="5">5 Passengers</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button class="search-btn" onclick="searchJourney()">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            Search Journey
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ROUTES ================= -->
+
+<section class="routes-section" id="routes">
+
+    <div class="section-heading">
+
+        <span>CONNECTING CITIES</span>
+
+        <h2>Explore Namo Bharat Routes</h2>
+
+        <p>
+            Fast, comfortable and reliable regional connectivity.
+        </p>
+
+    </div>
+
+
+    <div class="route-map">
+
+        <div class="route-line"></div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>New Ashok Nagar</strong>
+                <span>Delhi</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>Anand Vihar</strong>
+                <span>Delhi</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>Sahibabad</strong>
+                <span>Uttar Pradesh</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>Ghaziabad</strong>
+                <span>Uttar Pradesh</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>Guldhar</strong>
+                <span>Uttar Pradesh</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>Duhai</strong>
+                <span>Uttar Pradesh</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="station">
+
+            <div class="station-dot"></div>
+
+            <div class="station-info">
+
+                <strong>Murad Nagar</strong>
+                <span>Uttar Pradesh</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SCHEDULE ================= -->
+
+<section class="schedule-section" id="schedule">
+
+    <div class="section-heading">
+
+        <span>LIVE INFORMATION</span>
+
+        <h2>Train Schedule</h2>
+
+        <p>Check today's Namo Bharat service timings.</p>
+
+    </div>
+
+
+    <div class="schedule-card">
+
+        <div class="schedule-header">
+
+            <div>
+
+                <span>Route</span>
+
+                <h3>Delhi → Meerut</h3>
+
+            </div>
+
+            <div class="live-status">
+
+                <span></span>
+                LIVE
+
+            </div>
+
+        </div>
+
+
+        <div class="schedule-row">
+
+            <div>
+                <strong>06:00 AM</strong>
+                <span>New Ashok Nagar</span>
+            </div>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <div>
+                <strong>07:15 AM</strong>
+                <span>Meerut</span>
+            </div>
+
+            <button>View Details</button>
+
+        </div>
+
+
+        <div class="schedule-row">
+
+            <div>
+                <strong>07:00 AM</strong>
+                <span>New Ashok Nagar</span>
+            </div>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <div>
+                <strong>08:15 AM</strong>
+                <span>Meerut</span>
+            </div>
+
+            <button>View Details</button>
+
+        </div>
+
+
+        <div class="schedule-row">
+
+            <div>
+                <strong>08:00 AM</strong>
+                <span>New Ashok Nagar</span>
+            </div>
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            <div>
+                <strong>09:15 AM</strong>
+                <span>Meerut</span>
+            </div>
+
+            <button>View Details</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features-section">
+
+    <div class="section-heading">
+
+        <span>WHY NAMO BHARAT</span>
+
+        <h2>Designed for Modern India</h2>
+
+    </div>
+
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>High Speed</h3>
+
+            <p>
+                Experience fast regional transportation
+                with modern rapid rail technology.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>Safe & Secure</h3>
+
+            <p>
+                Advanced safety systems for a secure
+                and comfortable journey.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-mobile-screen"></i>
+
+            <h3>Digital Ticketing</h3>
+
+            <p>
+                Book tickets digitally and access your
+                QR ticket anytime.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-leaf"></i>
+
+            <h3>Eco Friendly</h3>
+
+            <p>
+                Electric rapid rail designed for a
+                cleaner and greener future.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="about">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-train"></i>
+                </div>
+
+                <div>
+                    <h2>NAMO BHARAT</h2>
+                    <span>Rapid Rail</span>
+                </div>
+
+            </div>
+
+            <p>
+                Connecting cities. Empowering people.
+                Building a faster India.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#booking">Book Ticket</a>
+            <a href="#routes">Routes</a>
+            <a href="#schedule">Schedule</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Support</h3>
+
+            <a href="#">Help Center</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Safety</a>
+            <a href="#">Terms & Conditions</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Connect</h3>
+
+            <div class="social-icons">
+
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Namo Bharat Rapid Rail Project
+        </span>
+
+        <span>
+            Made with ❤️ for India
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="login-modal" id="loginModal">
+
+    <div class="login-box">
+
+        <button class="close-login" onclick="closeLogin()">
+            ×
+        </button>
+
+        <div class="login-icon">
+            <i class="fa-solid fa-user-lock"></i>
+        </div>
+
+        <h2>Welcome Back</h2>
+
+        <p>Login to your Namo Bharat account</p>
+
+
+        <form onsubmit="loginUser(event)">
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    placeholder="Mobile Number"
+                    maxlength="10"
+                    required>
+
+            </div>
+
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required>
+
+                <i class="fa-solid fa-eye password-eye"
+                   onclick="togglePassword()"></i>
+
+            </div>
+
+
+            <div class="login-options">
+
+                <label>
+
+                    <input type="checkbox">
+
+                    Remember me
+
+                </label>
+
+                <a href="#" onclick="forgotPassword()">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <button class="login-submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+
+        <div class="divider">
+            OR
+        </div>
+
+
+        <button class="otp-login">
+
+            <i class="fa-solid fa-message"></i>
+
+            Login with OTP
+
+        </button>
+
+
+        <p class="signup-text">
+
+            Don't have an account?
+
+            <a href="#">Create Account</a>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Success
+    </span>
+
+</div>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
+

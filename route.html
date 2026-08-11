@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Route & Fare | Namo Bharat
+    </title>
+
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f8fc;
+
+        }
+
+
+        .route-page {
+
+            min-height: 100vh;
+
+            padding: 35px 20px;
+
+        }
+
+
+        .route-container {
+
+            max-width: 950px;
+
+            margin: auto;
+
+        }
+
+
+        /* HEADER */
+
+        .route-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .route-header h1 {
+
+            margin: 0;
+
+            color: #14213d;
+
+            font-size: 30px;
+
+        }
+
+
+        .route-header p {
+
+            color: #777;
+
+            margin-top: 8px;
+
+        }
+
+
+        .back-btn {
+
+            text-decoration: none;
+
+            background: #006cff;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* PLANNER */
+
+        .planner-card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.08);
+
+        }
+
+
+        .planner-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .planner-title i {
+
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #eaf3ff;
+
+            color: #006cff;
+
+            font-size: 24px;
+
+        }
+
+
+        .planner-title h2 {
+
+            margin: 0;
+
+            color: #14213d;
+
+        }
+
+
+        /* FORM */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+
+        }
+
+
+        .input-box label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #333;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .input-box select {
+
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            background: white;
+
+        }
+
+
+        .input-box select:focus {
+
+            border-color: #006cff;
+
+        }
+
+
+        /* BUTTON */
+
+        .route-btn {
+
+            width: 100%;
+
+            height: 55px;
+
+            margin-top: 25px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #006cff,
+                    #00b7ff
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .25s;
+
+        }
+
+
+        .route-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,108,255,.25);
+
+        }
+
+
+        /* RESULT */
+
+        #routeResult {
+
+            display: none;
+
+            margin-top: 30px;
+
+        }
+
+
+        .result-card {
+
+            background: #f3f8ff;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+        }
+
+
+        .result-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .result-header h3 {
+
+            margin: 0;
+
+            color: #14213d;
+
+        }
+
+
+        .fare {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #006cff;
+
+        }
+
+
+        /* ROUTE LINE */
+
+        .route-line {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin: 25px 0;
+
+        }
+
+
+        .station {
+
+            text-align: center;
+
+        }
+
+
+        .station i {
+
+            color: #006cff;
+
+            font-size: 20px;
+
+        }
+
+
+        .station strong {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color: #14213d;
+
+        }
+
+
+        .line {
+
+            flex: 1;
+
+            height: 4px;
+
+            background: #006cff;
+
+            border-radius: 5px;
+
+        }
+
+
+        /* DETAILS */
+
+        .route-details {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .detail-box {
+
+            background: white;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+        }
+
+
+        .detail-box i {
+
+            color: #006cff;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .detail-box span {
+
+            display: block;
+
+            color: #777;
+
+            font-size: 12px;
+
+        }
+
+
+        .detail-box strong {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color: #14213d;
+
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            .route-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .route-details {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .route-line {
+
+                gap: 8px;
+
+            }
+
+
+            .planner-card {
+
+                padding: 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="route-page">
+
+
+    <div class="route-container">
+
+
+        <!-- HEADER -->
+
+        <header class="route-header">
+
+            <div>
+
+                <h1>
+                    Route & Fare Planner 🗺️
+                </h1>
+
+                <p>
+                    Plan your Namo Bharat journey
+                </p>
+
+            </div>
+
+
+            <a
+                href="dashboard.html"
+                class="back-btn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+        </header>
+
+
+
+        <!-- PLANNER -->
+
+        <div class="planner-card">
+
+
+            <div class="planner-title">
+
+                <i class="fa-solid fa-route"></i>
+
+                <div>
+
+                    <h2>
+                        Plan Your Route
+                    </h2>
+
+                    <p>
+                        Select your stations
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-grid">
+
+
+                <!-- FROM -->
+
+                <div class="input-box">
+
+                    <label>
+                        From Station
+                    </label>
+
+
+                    <select id="fromStation">
+
+                        <option value="">
+                            Select station
+                        </option>
+
+                        <option value="New Ashok Nagar">
+                            New Ashok Nagar
+                        </option>
+
+                        <option value="Anand Vihar">
+                            Anand Vihar
+                        </option>
+
+                        <option value="Sahibabad">
+                            Sahibabad
+                        </option>
+
+                        <option value="Ghaziabad">
+                            Ghaziabad
+                        </option>
+
+                        <option value="Meerut">
+                            Meerut
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TO -->
+
+                <div class="input-box">
+
+                    <label>
+                        To Station
+                    </label>
+
+
+                    <select id="toStation">
+
+                        <option value="">
+                            Select station
+                        </option>
+
+                        <option value="New Ashok Nagar">
+                            New Ashok Nagar
+                        </option>
+
+                        <option value="Anand Vihar">
+                            Anand Vihar
+                        </option>
+
+                        <option value="Sahibabad">
+                            Sahibabad
+                        </option>
+
+                        <option value="Ghaziabad">
+                            Ghaziabad
+                        </option>
+
+                        <option value="Meerut">
+                            Meerut
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                class="route-btn"
+                onclick="calculateRoute()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Show Route & Fare
+
+            </button>
+
+
+
+            <!-- RESULT -->
+
+            <div id="routeResult">
+
+
+                <div class="result-card">
+
+
+                    <div class="result-header">
+
+                        <h3>
+                            Journey Details
+                        </h3>
+
+
+                        <div
+                            class="fare"
+                            id="fare">
+
+                            ₹0
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ROUTE -->
+
+                    <div class="route-line">
+
+
+                        <div class="station">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <strong id="resultFrom">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="line"></div>
+
+
+                        <div class="station">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <strong id="resultTo">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- DETAILS -->
+
+                    <div class="route-details">
+
+
+                        <div class="detail-box">
+
+                            <i class="fa-solid fa-route"></i>
+
+                            <span>
+                                Distance
+                            </span>
+
+                            <strong id="distance">
+                                —
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="detail-box">
+
+                            <i class="fa-solid fa-clock"></i>
+
+                            <span>
+                                Journey Time
+                            </span>
+
+                            <strong id="journeyTime">
+                                —
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="detail-box">
+
+                            <i class="fa-solid fa-ticket"></i>
+
+                            <span>
+                                Standard Fare
+                            </span>
+
+                            <strong id="standardFare">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+// ========================================
+// STATION DATA
+// ========================================
+
+const stations = {
+
+    "New Ashok Nagar": {
+        index: 0
+    },
+
+    "Anand Vihar": {
+        index: 1
+    },
+
+    "Sahibabad": {
+        index: 2
+    },
+
+    "Ghaziabad": {
+        index: 3
+    },
+
+    "Meerut": {
+        index: 4
+    }
+
+};
+
+
+// ========================================
+// CALCULATE ROUTE
+// ========================================
+
+function calculateRoute() {
+
+
+    let from =
+        document.getElementById(
+            "fromStation"
+        ).value;
+
+
+    let to =
+        document.getElementById(
+            "toStation"
+        ).value;
+
+
+    // VALIDATION
+
+    if (!from || !to) {
+
+        alert(
+            "Please select From and To stations."
+        );
+
+        return;
+
+    }
+
+
+    if (from === to) {
+
+        alert(
+            "From and To stations cannot be same."
+        );
+
+        return;
+
+    }
+
+
+    // STATION DIFFERENCE
+
+    let fromIndex =
+        stations[from].index;
+
+
+    let toIndex =
+        stations[to].index;
+
+
+    let stationDifference =
+        Math.abs(
+            toIndex - fromIndex
+        );
+
+
+    // SAMPLE DISTANCE
+
+    let distance =
+        stationDifference * 8;
+
+
+    // SAMPLE TIME
+
+    let journeyMinutes =
+        stationDifference * 7;
+
+
+    // FARE
+
+    let fare;
+
+
+    if (stationDifference === 1) {
+
+        fare = 20;
+
+    }
+
+    else if (stationDifference === 2) {
+
+        fare = 30;
+
+    }
+
+    else if (stationDifference === 3) {
+
+        fare = 40;
+
+    }
+
+    else {
+
+        fare = 50;
+
+    }
+
+
+    // DISPLAY RESULT
+
+    document.getElementById(
+        "resultFrom"
+    ).innerText = from;
+
+
+    document.getElementById(
+        "resultTo"
+    ).innerText = to;
+
+
+    document.getElementById(
+        "distance"
+    ).innerText =
+        distance + " km";
+
+
+    document.getElementById(
+        "journeyTime"
+    ).innerText =
+        journeyMinutes + " min";
+
+
+    document.getElementById(
+        "standardFare"
+    ).innerText =
+        "₹" + fare;
+
+
+    document.getElementById(
+        "fare"
+    ).innerText =
+        "₹" + fare;
+
+
+    // SHOW RESULT
+
+    document.getElementById(
+        "routeResult"
+    ).style.display =
+        "block";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Namo Bharat Rapid Rail</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<div class="login-page">
+
+
+    <!-- BACK TO HOME -->
+
+    <a href="index.html" class="back-home">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Home
+
+    </a>
+
+
+
+    <!-- LOGIN CARD -->
+
+    <div class="login-container">
+
+
+        <!-- LOGO -->
+
+        <div class="login-brand">
+
+            <div class="login-brand-icon">
+
+                <i class="fa-solid fa-train"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>NAMO BHARAT</h2>
+
+                <span>Rapid Rail</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HEADING -->
+
+        <div class="login-heading">
+
+            <h1>Welcome Back! 👋</h1>
+
+            <p>
+                Login to continue your Namo Bharat journey.
+            </p>
+
+        </div>
+
+
+
+        <!-- LOGIN FORM -->
+
+        <form id="loginForm">
+
+
+            <!-- MOBILE NUMBER -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Mobile Number
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <input
+                        type="tel"
+                        id="loginMobile"
+                        placeholder="Enter 10-digit mobile number"
+                        maxlength="10"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <div class="label-row">
+
+                    <label>
+
+                        Password
+
+                    </label>
+
+
+                    <a href="forgot-password.html">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required>
+
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        onclick="toggleLoginPassword()">
+
+                        <i
+                            class="fa-solid fa-eye"
+                            id="loginEye">
+                        </i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REMEMBER ME -->
+
+            <div class="remember-row">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="rememberMe">
+
+                    <span>Remember me</span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="login-main-btn">
+
+                <span>Login</span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- DIVIDER -->
+
+        <div class="login-divider">
+
+            <span>OR</span>
+
+        </div>
+
+
+
+        <!-- OTP LOGIN -->
+
+        <button
+            class="otp-btn"
+            onclick="loginWithOTP()">
+
+            <i class="fa-solid fa-message"></i>
+
+            Login with OTP
+
+        </button>
+
+
+
+        <!-- SIGNUP -->
+
+        <div class="create-account">
+
+            <span>Don't have an account?</span>
+
+            <a href="signup.html">
+
+                Create Account
+
+            </a>
+
+        </div>
+
+
+
+        <!-- SECURITY -->
+
+        <div class="secure-login">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span>
+                Your information is securely protected.
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- RIGHT SIDE INFORMATION -->
+
+    <div class="login-info">
+
+
+        <div class="info-content">
+
+            <div class="info-badge">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                SMART & FAST TRAVEL
+
+            </div>
+
+
+            <h2>
+
+                Your Journey.
+                <br>
+
+                <span>Your Way.</span>
+
+            </h2>
+
+
+            <p>
+
+                Login to manage your tickets,
+                plan journeys and experience
+                smarter regional travel.
+
+            </p>
+
+
+            <div class="info-features">
+
+
+                <div>
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                    <span>
+                        Digital Tickets
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-qrcode"></i>
+
+                    <span>
+                        QR Ticket
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <span>
+                        Smart Routes
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <span>
+                        Live Schedule
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- DECORATIVE TRAIN -->
+
+        <div class="login-train">
+
+            <i class="fa-solid fa-train"></i>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================= LOGIN JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================================
+   SHOW / HIDE PASSWORD
+========================================= */
+
+function toggleLoginPassword() {
+
+    const password =
+        document.getElementById("loginPassword");
+
+    const eye =
+        document.getElementById("loginEye");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        eye.classList.remove("fa-eye");
+
+        eye.classList.add("fa-eye-slash");
+
+    }
+
+    else {
+
+        password.type = "password";
+
+        eye.classList.remove("fa-eye-slash");
+
+        eye.classList.add("fa-eye");
+
+    }
+
+}
+
+
+
+/* =========================================
+   LOGIN FORM
+========================================= */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const mobile =
+        document.getElementById("loginMobile").value;
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+
+    /* Mobile validation */
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+
+        alert(
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+    /* Password validation */
+
+    if (password.length < 6) {
+
+        alert(
+            "Password must contain at least 6 characters."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Temporary login system.
+
+       Later Phase 2 mein hum
+       localStorage authentication
+       add karenge.
+    */
+
+    localStorage.setItem(
+        "namoBharatLoggedIn",
+        "true"
+    );
+
+
+    localStorage.setItem(
+        "namoBharatMobile",
+        mobile
+    );
+
+
+    /* Dashboard */
+
+    window.location.href =
+        "dashboard.html";
+
+});
+
+
+
+/* =========================================
+   LOGIN WITH OTP
+========================================= */
+
+function loginWithOTP() {
+
+    window.location.href =
+        "otp.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
