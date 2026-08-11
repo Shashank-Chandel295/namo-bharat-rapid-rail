@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function openLogin() {
 
      window.location.href = "login.html";
-     
+
     const modal = document.getElementById("loginModal");
 
     modal.classList.add("show");
@@ -290,3 +290,14 @@ function showToast(message) {
 
 }
 
+// ================= MOBILE MENU =================
+
+function toggleMenu() {
+
+    const nav = document.getElementById("mainNav");
+
+    if (nav) {
+        nav.classList.toggle("mobile-menu");
+    }
+
+}
