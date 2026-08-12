@@ -1162,3 +1162,162 @@ color:white;
         cursor: pointer;
     }
 }
+
+/* =====================================================
+   MOBILE APP STYLE BOTTOM NAVIGATION
+   ===================================================== */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    /* Desktop navbar navigation hide */
+    .navbar nav {
+        display: none;
+    }
+
+    /* Desktop language button hide */
+    .language-btn {
+        display: none;
+    }
+
+    /* Login button visible rahega */
+    .login-btn {
+        display: flex;
+    }
+
+
+    /* Mobile bottom navigation */
+
+    .mobile-bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 68px;
+
+        background: rgba(255, 255, 255, 0.97);
+
+        border-top: 1px solid #e5e7eb;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-around;
+
+        z-index: 9999;
+
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.10);
+
+        padding: 5px 4px;
+
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+
+    /* Individual navigation item */
+
+    .mobile-nav-item {
+        flex: 1;
+
+        height: 58px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 4px;
+
+        text-decoration: none;
+
+        color: #6b7280;
+
+        font-size: 10px;
+
+        font-weight: 600;
+
+        transition: all 0.2s ease;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* Icons */
+
+    .mobile-nav-item i {
+        font-size: 19px;
+
+        line-height: 1;
+    }
+
+
+    /* Text */
+
+    .mobile-nav-item span {
+        white-space: nowrap;
+    }
+
+
+    /* Active item */
+
+    .mobile-nav-item.active {
+        color: #e63946;
+    }
+
+
+    .mobile-nav-item.active i {
+        transform: translateY(-1px);
+    }
+
+
+    /* Click effect */
+
+    .mobile-nav-item:active {
+        transform: scale(0.92);
+    }
+
+
+    /* Content ke neeche bottom navigation ke liye space */
+
+    body {
+        padding-bottom: 75px;
+    }
+
+
+    /* Footer ke neeche extra space */
+
+    footer {
+        padding-bottom: 85px;
+    }
+
+}
+
+
+/* ================= VERY SMALL MOBILE ================= */
+
+@media (max-width: 380px) {
+
+    .mobile-bottom-nav {
+        height: 64px;
+    }
+
+    .mobile-nav-item {
+        height: 54px;
+        font-size: 9px;
+    }
+
+    .mobile-nav-item i {
+        font-size: 17px;
+    }
+
+}
