@@ -130,7 +130,7 @@
                     </label>
 
 
-                    <a href="forgot-password.html">
+                    <a href="forget-password.html">
 
                         Forgot Password?
 
@@ -213,17 +213,36 @@
 
 
 
-        <!-- OTP LOGIN -->
+        <!-- ================= SOCIAL LOGIN ================= -->
 
-        <button
-            class="otp-btn"
-            onclick="loginWithOTP()">
+<div class="social-login-buttons">
 
-            <i class="fa-solid fa-message"></i>
+    <!-- GOOGLE LOGIN -->
+    <button
+        type="button"
+        class="social-login-btn google-login-btn"
+        onclick="loginWithGoogle()">
 
-            Login with OTP
+        <i class="fa-brands fa-google"></i>
 
-        </button>
+        <span>Continue with Google</span>
+
+    </button>
+
+
+    <!-- APPLE LOGIN -->
+    <button
+        type="button"
+        class="social-login-btn apple-login-btn"
+        onclick="loginWithApple()">
+
+        <i class="fa-brands fa-apple"></i>
+
+        <span>Continue with Apple</span>
+
+    </button>
+
+</div>
 
 
 
@@ -480,13 +499,27 @@ document
 
 
 /* =========================================
-   LOGIN WITH OTP
+   LOGIN WITH GOOGLE
 ========================================= */
 
-function loginWithOTP() {
+function loginWithGoogle() {
 
-    window.location.href =
-        "otp.html";
+    alert(
+        "Google Login will be connected during authentication setup."
+    );
+
+}
+
+
+/* =========================================
+   LOGIN WITH APPLE
+========================================= */
+
+function loginWithApple() {
+
+    alert(
+        "Apple Login will be connected during authentication setup."
+    );
 
 }
 

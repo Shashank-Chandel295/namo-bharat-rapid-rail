@@ -7,765 +7,526 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>Book Ticket | Namo Bharat</title>
 
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="stylesheet" href="css/dashboard.css">
-
+<link rel="stylesheet" href="CSS/style.css">
+<link rel="stylesheet" href="CSS/dashboard.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
 <style>
 
+.booking-page {
+    min-height: 100vh;
+    background: #f5f8fc;
+    padding: 40px;
+}
 
-.booking-page{
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
-min-height:100vh;
+.booking-header h1 {
+    font-size: 32px;
+    color: #14213d;
+}
 
-background:#f5f8fc;
-
-padding:40px;
-
-
+.booking-header span {
+    color: #006cff;
 }
 
 
+/* ================= DASHBOARD BUTTON ================= */
 
-.booking-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:30px;
-
+.back-dashboard {
+    text-decoration: none;
+    background: #006cff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
+/* ================= BOOKING CONTAINER ================= */
 
-.booking-header h1{
-
-font-size:32px;
-
-color:#14213d;
-
+.booking-container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
 }
 
 
-.booking-header span{
+/* ================= TITLE ================= */
 
-color:#006cff;
+.booking-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
+.booking-title i {
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    background: #eaf3ff;
+    color: #006cff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
 }
 
 
+/* ================= FORM ================= */
 
-.back-dashboard{
-
-text-decoration:none;
-
-background:#006cff;
-
-color:white;
-
-padding:12px 20px;
-
-border-radius:12px;
-
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
 }
 
-
-
-
-.booking-container{
-
-max-width:900px;
-
-margin:auto;
-
-background:white;
-
-padding:40px;
-
-border-radius:25px;
-
-box-shadow:
-0 15px 40px rgba(0,0,0,.08);
-
+.input-box label {
+    font-weight: 600;
+    font-size: 14px;
 }
-
-
-
-.booking-title{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-margin-bottom:30px;
-
-}
-
-
-
-.booking-title i{
-
-width:55px;
-
-height:55px;
-
-border-radius:15px;
-
-background:#eaf3ff;
-
-color:#006cff;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:25px;
-
-}
-
-
-
-.form-grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:25px;
-
-}
-
-
-
-.input-box label{
-
-font-weight:600;
-
-font-size:14px;
-
-}
-
-
 
 .input-box input,
-.input-box select{
-
-
-width:100%;
-
-height:50px;
-
-margin-top:8px;
-
-border:1px solid #ddd;
-
-border-radius:12px;
-
-padding:0 15px;
-
-outline:none;
-
-font-size:14px;
-
+.input-box select {
+    width: 100%;
+    height: 50px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 0 15px;
+    outline: none;
+    font-size: 14px;
 }
-
-
 
 .input-box input:focus,
-.input-box select:focus{
-
-border-color:#006cff;
-
+.input-box select:focus {
+    border-color: #006cff;
 }
 
 
+/* ================= CLASS ================= */
 
+.class-box {
+    margin-top: 30px;
+}
 
+.class-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
 
-.class-box{
+.class-card {
+    flex: 1;
+    border: 2px solid #ddd;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
 
-margin-top:30px;
-
+.class-card:hover {
+    border-color: #006cff;
+    background: #f2f8ff;
 }
 
 
+/* ================= CALCULATE BUTTON ================= */
 
-.class-options{
+.search-btn {
+    width: 100%;
+    height: 55px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 15px;
 
-display:flex;
+    background: linear-gradient(
+        135deg,
+        #006cff,
+        #00b7ff
+    );
 
-gap:20px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
 
-margin-top:15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
+.search-btn:hover {
+    opacity: 0.95;
 }
 
 
+/* ================= MOBILE ================= */
 
-.class-card{
+@media(max-width:700px) {
 
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 
-flex:1;
+    .booking-page {
+        padding: 20px;
+    }
 
-border:2px solid #ddd;
+    .booking-header {
+        gap: 15px;
+        align-items: flex-start;
+    }
 
-padding:20px;
+    .booking-header h1 {
+        font-size: 25px;
+    }
 
-border-radius:15px;
+    .booking-container {
+        padding: 25px;
+    }
 
-cursor:pointer;
+    .back-dashboard {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
 
-}
-
-
-
-.class-card:hover{
-
-border-color:#006cff;
-
-background:#f2f8ff;
-
-}
-
-
-
-
-.fare-box{
-
-
-margin-top:30px;
-
-padding:20px;
-
-background:#f3f8ff;
-
-border-radius:15px;
-
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
+    .class-options {
+        flex-direction: column;
+    }
 
 }
-
-
-
-.fare-box h2{
-
-color:#006cff;
-
-}
-
-
-
-.search-btn{
-
-
-width:100%;
-
-height:55px;
-
-margin-top:30px;
-
-border:none;
-
-border-radius:15px;
-
-background:
-
-linear-gradient(
-135deg,
-#006cff,
-#00b7ff
-);
-
-
-color:white;
-
-font-size:16px;
-
-font-weight:700;
-
-cursor:pointer;
-
-}
-
-
-
-
-@media(max-width:700px){
-
-.form-grid{
-
-grid-template-columns:1fr;
-
-}
-
-
-.booking-page{
-
-padding:20px;
-
-}
-
-}
-
 
 </style>
 
-
 </head>
-
 
 
 <body>
 
 
-
 <div class="booking-page">
 
 
+<!-- ================= BOOKING HEADER ================= -->
 
 <header class="booking-header">
 
+    <div>
 
-<div>
+        <h1 id="booking-title">
+            Book Your <span>Journey</span> 🚆
+        </h1>
 
-<h1 id="booking-title">
+        <p id="booking-subtitle">
+            Namo Bharat Rapid Rail Smart Booking
+        </p>
 
-Book Your <span>Journey</span> 🚆
+    </div>
 
-</h1>
 
-<p id="booking-subtitle">
+    <!-- DASHBOARD BUTTON -->
 
-Namo Bharat Rapid Rail Smart Booking
+    <div class="dashboard-option">
 
-</p>
+    <span class="dashboard-label">
+        Dashboard
+    </span>
 
+    <a href="dashboard.html"
+       class="back-dashboard">
+
+        <i class="fa-solid fa-gauge-high"></i>
+
+    </a>
 
 </div>
-
-
-
-<a href="dashboard.html"
-class="back-dashboard">
-
-<a href="dashboard.html"
-class="back-dashboard">
-
-<span id="dashboard-text">
-Dashboard
-</span>
-
-</a>
-
-</a>
-
-
 </header>
 
 
 
-
-
+<!-- ================= BOOKING CONTAINER ================= -->
 
 <div class="booking-container">
 
 
+<!-- ================= JOURNEY TITLE ================= -->
 
 <div class="booking-title">
 
+    <i class="fa-solid fa-ticket"></i>
 
-<i class="fa-solid fa-ticket"></i>
-
-
-<h2 id="journey-text">
-
-Journey Details
-
-</h2>
-
+    <h2 id="journey-text">
+        Journey Details
+    </h2>
 
 </div>
 
 
 
-
-
-
+<!-- ================= FORM ================= -->
 
 <div class="form-grid">
 
 
+<!-- FROM STATION -->
 
 <div class="input-box">
 
+    <label id="from-text">
+        From Station
+    </label>
 
+    <select id="fromStation">
 
-<label id="from-text">
+        <option>
+            New Ashok Nagar
+        </option>
 
-From Station
+        <option>
+            Anand Vihar
+        </option>
 
-</label>
+        <option>
+            Sahibabad
+        </option>
 
+        <option>
+            Ghaziabad
+        </option>
 
-<select id="fromStation">
+        <option>
+            Meerut
+        </option>
 
-
-<option>
-
-New Ashok Nagar
-
-</option>
-
-
-<option>
-
-Anand Vihar
-
-</option>
-
-
-<option>
-
-Sahibabad
-
-</option>
-
-
-<option>
-
-Ghaziabad
-
-</option>
-
-
-<option>
-
-Meerut
-
-</option>
-
-
-
-</select>
-
+    </select>
 
 </div>
 
 
 
-
-
-
+<!-- TO STATION -->
 
 <div class="input-box">
 
+    <label id="to-text">
+        To Station
+    </label>
 
-<label id="to-text">
+    <select id="toStation">
 
-To Station
+        <option>
+            Meerut
+        </option>
 
-</label>
+        <option>
+            Ghaziabad
+        </option>
 
+        <option>
+            Sahibabad
+        </option>
 
-<select id="toStation">
+        <option>
+            Anand Vihar
+        </option>
 
+        <option>
+            New Ashok Nagar
+        </option>
 
-<option>
-
-Meerut
-
-</option>
-
-
-<option>
-
-Ghaziabad
-
-</option>
-
-
-<option>
-
-Sahibabad
-
-</option>
-
-
-<option>
-
-Anand Vihar
-
-</option>
-
-
-<option>
-
-New Ashok Nagar
-
-</option>
-
-
-</select>
-
+    </select>
 
 </div>
 
 
 
-
-
-
+<!-- DATE -->
 
 <div class="input-box">
 
+    <label id="date-text">
+        Journey Date
+    </label>
 
-<label id="date-text">
-
-Journey Date
-
-</label>
-
-
-<input type="date" id="journeyDate">
-
+    <input
+        type="date"
+        id="journeyDate">
 
 </div>
 
 
 
-
-
-
+<!-- PASSENGERS -->
 
 <div class="input-box">
 
-<label id="passenger-text">
+    <label id="passenger-text">
+        Passengers
+    </label>
 
-Passengers
+    <input
+        type="number"
+        id="passenger"
+        value="1"
+        min="1">
 
-</label>
-
-
-<input type="number"
-
-id="passenger"
-
-value="1"
-
-min="1">
+</div>
 
 
 </div>
 
 
 
-</div>
-
-
-
-
-
-
-
+<!-- ================= CLASS ================= -->
 
 <div class="class-box">
 
-<h3 id="class-text">
-
-Select Class
-
-</h3>
+    <h3 id="class-text">
+        Select Class
+    </h3>
 
 
-
-<div class="class-options">
-
+    <div class="class-options">
 
 
-<label class="class-card">
+        <!-- STANDARD -->
 
+        <label class="class-card">
 
-<input type="radio"
+            <input
+                type="radio"
+                name="class"
+                value="40"
+                checked>
 
-name="class"
+            <span id="standard-text">
+                Standard
+            </span>
 
-value="40"
+            <br>
 
-checked>
+            ₹40
 
-<span id="standard-text">
-Standard
-</span>
-
-<br>
-
-₹40
-
-
-</label>
+        </label>
 
 
 
+        <!-- PREMIUM -->
+
+        <label class="class-card">
+
+            <input
+                type="radio"
+                name="class"
+                value="80">
+
+            <span id="premium-text">
+                Premium
+            </span>
+
+            <br>
+
+            ₹80
+
+        </label>
 
 
-
-
-<label class="class-card">
-
-
-<input type="radio"
-
-name="class"
-
-value="80">
-
-
-<span id="premium-text">
-Premium
-</span>
-
-<br>
-
-₹80
-
-
-</label>
-
-
-
+    </div>
 
 </div>
 
 
 
-</div>
+<!-- ================= CALCULATE FARE BUTTON ================= -->
 
+<button
+    class="search-btn"
+    onclick="calculateFare()">
 
+    <span id="calculate-text">
+        Calculate Fare & Continue
+    </span>
 
-
-
-
-
-
-<div class="fare-box">
-
-
-<div>
-
-<p id="fare-text">
-
-Total Fare
-
-</p>
-
-
-<h2 id="fare">
-
-₹40
-
-</h2>
-
-
-</div>
-
-
-
-<i class="fa-solid fa-wallet fa-2x"></i>
-
-
-</div>
-
-
-
-
-
-
-<button class="search-btn"
-onclick="calculateFare()">
-
-
-<button class="search-btn"
-onclick="calculateFare()">
-
-
-<span id="calculate-text">
-Calculate Fare & Continue
-</span>
-
-
-<i class="fa-solid fa-arrow-right"></i>
-
+    <i class="fa-solid fa-arrow-right"></i>
 
 </button>
 
 
-<i class="fa-solid fa-arrow-right"></i>
-
-
-</button>
-
-
-
+</div>
 
 
 </div>
 
 
 
-
-</div>
-
-
-
-
-
-
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
 function calculateFare() {
 
-    // Get From Station
+
+    /* ================= GET STATIONS ================= */
 
     let fromStation =
         document.getElementById("fromStation").value;
 
 
-    // Get To Station
-
     let toStation =
         document.getElementById("toStation").value;
 
 
-    // Get Journey Date
+
+    /* ================= SAME STATION CHECK ================= */
+
+    if (fromStation === toStation) {
+
+        alert(
+            "From Station and To Station cannot be the same."
+        );
+
+        return;
+
+    }
+
+
+
+    /* ================= JOURNEY DATE ================= */
 
     let journeyDate =
         document.getElementById("journeyDate").value;
 
 
-    // Get Passenger Count
+    if (!journeyDate) {
+
+        alert(
+            "Please select your journey date."
+        );
+
+        return;
+
+    }
+
+
+
+    /* ================= PASSENGERS ================= */
 
     let passenger =
         parseInt(
@@ -773,7 +534,19 @@ function calculateFare() {
         );
 
 
-    // Get Selected Class
+    if (passenger < 1) {
+
+        alert(
+            "Please select at least 1 passenger."
+        );
+
+        return;
+
+    }
+
+
+
+    /* ================= SELECTED CLASS ================= */
 
     let selectedClass =
         document.querySelector(
@@ -785,37 +558,30 @@ function calculateFare() {
         parseInt(selectedClass.value);
 
 
+
     let className =
         selectedClass.parentElement.innerText
             .split("\n")[0]
             .trim();
 
 
-    // Calculate Fare
+
+    /* ================= CALCULATE FARE ================= */
 
     let total =
         passenger * classFare;
 
 
-    // Show Fare
 
-    document.getElementById("fare")
-        .innerHTML =
-        "₹" + total;
-
-
-
-    // Generate Ticket ID
+    /* ================= SAVE BOOKING DATA ================= */
 
     let ticketId =
         "NBR" +
         Math.floor(
-            100000 + Math.random() * 900000
+            100000 +
+            Math.random() * 900000
         );
 
-
-
-    // Save Booking Data
 
     localStorage.setItem(
         "ticketId",
@@ -860,11 +626,13 @@ function calculateFare() {
 
 
 
-    // Ticket Count
+    /* ================= TICKET COUNT ================= */
 
     let oldTickets =
         parseInt(
-            localStorage.getItem("totalTickets") || "0"
+            localStorage.getItem(
+                "totalTickets"
+            ) || "0"
         );
 
 
@@ -875,11 +643,13 @@ function calculateFare() {
 
 
 
-    // Journey Count
+    /* ================= JOURNEY COUNT ================= */
 
     let oldJourneys =
         parseInt(
-            localStorage.getItem("totalJourneys") || "0"
+            localStorage.getItem(
+                "totalJourneys"
+            ) || "0"
         );
 
 
@@ -890,90 +660,20 @@ function calculateFare() {
 
 
 
-    // Success Message
+    /* ================= SHOW SUCCESS ================= */
 
     alert(
         "Booking Details Saved Successfully!"
     );
 
-
 }
-
-
-
-    let passenger =
-        document.getElementById("passenger").value;
-
-
-    let classFare =
-        document.querySelector(
-            'input[name="class"]:checked'
-        ).value;
-
-
-    let total =
-        passenger * classFare;
-
-
-    document.getElementById("fare")
-        .innerHTML =
-        "₹" + total;
-
-
-
-    // Get old ticket count
-
-    let oldTickets =
-        parseInt(
-            localStorage.getItem("totalTickets") || "0"
-        );
-
-
-    // Increase ticket count
-
-    let newTickets =
-        oldTickets + 1;
-
-
-    localStorage.setItem(
-        "totalTickets",
-        newTickets
-    );
-
-
-
-    // Increase journey count
-
-    let oldJourneys =
-        parseInt(
-            localStorage.getItem("totalJourneys") || "0"
-        );
-
-
-    let newJourneys =
-        oldJourneys + 1;
-
-
-    localStorage.setItem(
-        "totalJourneys",
-        newJourneys
-    );
-
-
-
-    alert(
-        "Fare Calculated Successfully!"
-    );
-
-
-
-
-
 
 </script>
 
 
-<script src="js/language.js"></script>
+<!-- LANGUAGE SCRIPT -->
+
+<script src="JS/language.js"></script>
 
 
 </body>

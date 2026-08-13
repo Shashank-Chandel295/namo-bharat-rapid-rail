@@ -848,3 +848,68 @@ body{
         cursor: pointer;
     }
 }
+
+/* =========================================
+   SOCIAL LOGIN BUTTONS
+========================================= */
+
+.social-login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+
+.social-login-btn {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.social-login-btn i {
+    font-size: 19px;
+}
+
+
+/* GOOGLE */
+
+.google-login-btn {
+    background: #ffffff;
+    color: #222222;
+    border: 1px solid #dddddd;
+}
+
+
+.google-login-btn:hover {
+    background: #f7f7f7;
+    transform: translateY(-1px);
+}
+
+
+/* APPLE */
+
+.apple-login-btn {
+    background: #111111;
+    color: #ffffff;
+    border: 1px solid #111111;
+}
+
+
+.apple-login-btn:hover {
+    background: #000000;
+    transform: translateY(-1px);
+}
