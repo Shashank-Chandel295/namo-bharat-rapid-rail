@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nearby Stations | Namo Bharat</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            background: #f6f8fb;
+            min-height: 100vh;
+        }
+
+        .nearby-page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px 100px;
+        }
+
+        .nearby-header {
+            background: linear-gradient(135deg, #07152d, #0d3b73);
+            color: white;
+            padding: 35px;
+            border-radius: 22px;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .nearby-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .nearby-header p {
+            color: #c5d4e8;
+            font-size: 14px;
+        }
+
+        .location-box {
+            background: white;
+            padding: 22px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 35px rgba(0,0,0,.07);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .location-icon {
+            width: 48px;
+            height: 48px;
+            background: #eaf3ff;
+            color: #087cff;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .location-text {
+            flex: 1;
+        }
+
+        .location-text strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .location-text span {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .location-btn {
+            border: none;
+            background: #087cff;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .stations-title {
+            margin: 30px 0 15px;
+            font-size: 22px;
+            color: #14213d;
+        }
+
+        .station-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .station-card {
+            background: white;
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .station-icon {
+            min-width: 48px;
+            height: 48px;
+            background: #eaf3ff;
+            color: #087cff;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .station-details {
+            flex: 1;
+        }
+
+        .station-details h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #14213d;
+        }
+
+        .station-details p {
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .distance {
+            color: #087cff;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .direction-btn {
+            border: 1px solid #087cff;
+            background: white;
+            color: #087cff;
+            padding: 9px 12px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .direction-btn:hover {
+            background: #087cff;
+            color: white;
+        }
+
+        .message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background: #eaf8f0;
+            color: #16834d;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        @media(max-width: 600px) {
+
+            .nearby-page {
+                padding: 20px 15px 90px;
+            }
+
+            .nearby-header {
+                padding: 25px 20px;
+            }
+
+            .nearby-header h1 {
+                font-size: 25px;
+            }
+
+            .location-box {
+                align-items: flex-start;
+            }
+
+            .location-btn {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .station-list {
+                grid-template-columns: 1fr;
+            }
+
+            .station-card {
+                padding: 17px;
+            }
+
+            .direction-btn {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="nearby-page">
+
+    <!-- HEADER -->
+
+    <div class="nearby-header">
+
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+        </a>
+
+        <h1>
+            <i class="fa-solid fa-location-crosshairs"></i>
+            Nearby Stations
+        </h1>
+
+        <p>
+            Find Namo Bharat stations near your current location.
+        </p>
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="location-box">
+
+        <div class="location-icon">
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+
+        <div class="location-text">
+
+            <strong>Your Current Location</strong>
+
+            <span id="locationText">
+                Location not detected
+            </span>
+
+        </div>
+
+        <button class="location-btn" onclick="getLocation()">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            Detect
+        </button>
+
+    </div>
+
+    <div class="message" id="message"></div>
+
+
+    <!-- STATIONS -->
+
+    <h2 class="stations-title">
+        Nearby Namo Bharat Stations
+    </h2>
+
+    <div class="station-list">
+
+        <!-- Station 1 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>New Ashok Nagar</h3>
+
+                <p>
+                    Delhi
+                </p>
+
+                <span class="distance">
+                    <i class="fa-solid fa-location-arrow"></i>
+                    Nearest Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('New Ashok Nagar Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+        <!-- Station 2 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Anand Vihar</h3>
+
+                <p>
+                    Delhi
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Anand Vihar Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+        <!-- Station 3 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Sahibabad</h3>
+
+                <p>
+                    Uttar Pradesh
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Sahibabad Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+        <!-- Station 4 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Ghaziabad</h3>
+
+                <p>
+                    Uttar Pradesh
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Ghaziabad Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+        <!-- Station 5 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Guldhar</h3>
+
+                <p>
+                    Uttar Pradesh
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Guldhar Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+        <!-- Station 6 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Duhai</h3>
+
+                <p>
+                    Uttar Pradesh
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Duhai Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+        <!-- Station 7 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Murad Nagar</h3>
+
+                <p>
+                    Uttar Pradesh
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Murad Nagar Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+        <!-- Station 5 -->
+
+        <div class="station-card">
+
+            <div class="station-icon">
+                <i class="fa-solid fa-train"></i>
+            </div>
+
+            <div class="station-details">
+
+                <h3>Meerut</h3>
+
+                <p>
+                    Uttar Pradesh
+                </p>
+
+                <span class="distance">
+                    Namo Bharat Station
+                </span>
+
+            </div>
+
+            <button class="direction-btn"
+                    onclick="openMap('Meerut Namo Bharat Station')">
+
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                Directions
+
+            </button>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+function getLocation() {
+
+    const locationText =
+        document.getElementById("locationText");
+
+    const message =
+        document.getElementById("message");
+
+
+    if (!navigator.geolocation) {
+
+        locationText.innerText =
+            "Geolocation is not supported by your browser.";
+
+        return;
+
+    }
+
+
+    locationText.innerText =
+        "Detecting your location...";
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+                position.coords.latitude;
+
+            const longitude =
+                position.coords.longitude;
+
+
+            locationText.innerText =
+                "Latitude: " +
+                latitude.toFixed(5) +
+                " | Longitude: " +
+                longitude.toFixed(5);
+
+
+            message.style.display = "block";
+
+            message.innerHTML =
+                '<i class="fa-solid fa-circle-check"></i> ' +
+                'Your location has been detected successfully.';
+
+        },
+
+        function(error) {
+
+            locationText.innerText =
+                "Unable to detect location.";
+
+            message.style.display = "block";
+
+            message.style.background = "#fff3f3";
+
+            message.style.color = "#d33";
+
+            message.innerHTML =
+                '<i class="fa-solid fa-triangle-exclamation"></i> ' +
+                'Please allow location permission in your browser.';
+
+        }
+
+    );
+
+}
+
+
+function openMap(station) {
+
+    const url =
+        "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(station);
+
+    window.open(url, "_blank");
+
+}
+
+</script>
+
+</body>
+</html>

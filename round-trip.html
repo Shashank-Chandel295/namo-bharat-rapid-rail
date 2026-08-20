@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Round Trip | Namo Bharat Rapid Rail</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f6f8fb;
+            font-family: "Inter", sans-serif;
+            color: #14213d;
+        }
+
+        .round-trip-page {
+            min-height: 100vh;
+            padding: 40px 20px 80px;
+        }
+
+        .round-trip-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #07152d, #0d3b73);
+            color: white;
+            border-radius: 22px;
+            padding: 35px;
+            margin-bottom: 25px;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #c4d2e5;
+            font-size: 14px;
+        }
+
+        /* BOOKING CARD */
+
+        .trip-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, .08);
+        }
+
+        .trip-title {
+            margin-bottom: 25px;
+        }
+
+        .trip-title h2 {
+            margin: 0 0 7px;
+            font-size: 22px;
+        }
+
+        .trip-title p {
+            margin: 0;
+            color: #7c8594;
+            font-size: 12px;
+        }
+
+        /* FIELDS */
+
+        .trip-fields {
+            display: grid;
+            grid-template-columns: 1fr 45px 1fr;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #697386;
+            margin-bottom: 7px;
+        }
+
+        .field label i {
+            color: #087cff;
+            margin-right: 4px;
+        }
+
+        .field select,
+        .field input {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #dce1e8;
+            border-radius: 11px;
+            padding: 0 13px;
+            background: white;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .field select:focus,
+        .field input:focus {
+            border-color: #087cff;
+            box-shadow: 0 0 0 3px rgba(8, 124, 255, .08);
+        }
+
+        .swap-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #eaf3ff;
+            color: #087cff;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        /* DATE / PASSENGER */
+
+        .extra-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* SEARCH */
+
+        .search-trip-btn {
+            width: 100%;
+            height: 52px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 12px;
+            background: #087cff;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .search-trip-btn:hover {
+            background: #0068df;
+            transform: translateY(-1px);
+        }
+
+        /* INFO */
+
+        .info-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f7ff;
+            border-radius: 12px;
+            color: #4d6380;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .info-box i {
+            color: #087cff;
+            margin-right: 6px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .round-trip-page {
+                padding: 20px 15px 80px;
+            }
+
+            .page-header {
+                padding: 25px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .trip-card {
+                padding: 20px;
+            }
+
+            .trip-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .swap-btn {
+                display: block;
+                margin: -3px auto;
+                transform: rotate(90deg);
+            }
+
+            .extra-fields {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="round-trip-page">
+
+    <div class="round-trip-container">
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <a href="index.html" class="back-home">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Home
+
+            </a>
+
+            <h1>
+
+                <i class="fa-solid fa-repeat"></i>
+
+                Round Trip
+
+            </h1>
+
+            <p>
+                Plan your return journey with Namo Bharat Rapid Rail.
+            </p>
+
+        </div>
+
+
+        <!-- BOOKING CARD -->
+
+        <div class="trip-card">
+
+            <div class="trip-title">
+
+                <h2>Plan Your Round Trip</h2>
+
+                <p>
+                    Select your departure and return journey details.
+                </p>
+
+            </div>
+
+
+            <!-- FROM / TO -->
+
+            <div class="trip-fields">
+
+                <div class="field">
+
+                    <label>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        From
+
+                    </label>
+
+                    <select id="fromStation">
+
+                        <option value="">
+                            Select Station
+                        </option>
+
+                        <option>New Ashok Nagar</option>
+                        <option>Anand Vihar</option>
+                        <option>Sahibabad</option>
+                        <option>Ghaziabad</option>
+                        <option>Guldhar</option>
+                        <option>Duhai</option>
+                        <option>Murad Nagar</option>
+
+                    </select>
+
+                </div>
+
+
+                <button class="swap-btn"
+                        onclick="swapStations()">
+
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                </button>
+
+
+                <div class="field">
+
+                    <label>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        To
+
+                    </label>
+
+                    <select id="toStation">
+
+                        <option value="">
+                            Select Station
+                        </option>
+
+                        <option>New Ashok Nagar</option>
+                        <option>Anand Vihar</option>
+                        <option>Sahibabad</option>
+                        <option>Ghaziabad</option>
+                        <option>Guldhar</option>
+                        <option>Duhai</option>
+                        <option>Murad Nagar</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATES / PASSENGERS -->
+
+            <div class="extra-fields">
+
+                <div class="field">
+
+                    <label>
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        Departure Date
+
+                    </label>
+
+                    <input type="date"
+                           id="departureDate">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Return Date
+
+                    </label>
+
+                    <input type="date"
+                           id="returnDate">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+
+                        <i class="fa-solid fa-users"></i>
+
+                        Passengers
+
+                    </label>
+
+                    <select id="passengers">
+
+                        <option value="1">
+                            1 Passenger
+                        </option>
+
+                        <option value="2">
+                            2 Passengers
+                        </option>
+
+                        <option value="3">
+                            3 Passengers
+                        </option>
+
+                        <option value="4">
+                            4 Passengers
+                        </option>
+
+                        <option value="5">
+                            5 Passengers
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <button class="search-trip-btn"
+                    onclick="searchRoundTrip()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Search Round Trip
+
+            </button>
+
+
+            <!-- INFO -->
+
+            <div class="info-box">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                Select your departure and return dates to find
+                available Namo Bharat services.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function swapStations() {
+
+    const from =
+        document.getElementById("fromStation");
+
+    const to =
+        document.getElementById("toStation");
+
+    const temp = from.value;
+
+    from.value = to.value;
+
+    to.value = temp;
+
+}
+
+
+function searchRoundTrip() {
+
+    const from =
+        document.getElementById("fromStation").value;
+
+    const to =
+        document.getElementById("toStation").value;
+
+    const departure =
+        document.getElementById("departureDate").value;
+
+    const returnDate =
+        document.getElementById("returnDate").value;
+
+    const passengers =
+        document.getElementById("passengers").value;
+
+
+    if (!from || !to) {
+
+        alert("Please select From and To stations.");
+
+        return;
+
+    }
+
+
+    if (from === to) {
+
+        alert("From and To stations cannot be the same.");
+
+        return;
+
+    }
+
+
+    if (!departure) {
+
+        alert("Please select departure date.");
+
+        return;
+
+    }
+
+
+    if (!returnDate) {
+
+        alert("Please select return date.");
+
+        return;
+
+    }
+
+
+    if (returnDate < departure) {
+
+        alert("Return date cannot be before departure date.");
+
+        return;
+
+    }
+
+
+    // Save booking information
+
+    localStorage.setItem(
+        "roundTripFrom",
+        from
+    );
+
+    localStorage.setItem(
+        "roundTripTo",
+        to
+    );
+
+    localStorage.setItem(
+        "roundTripDeparture",
+        departure
+    );
+
+    localStorage.setItem(
+        "roundTripReturn",
+        returnDate
+    );
+
+    localStorage.setItem(
+        "roundTripPassengers",
+        passengers
+    );
+
+
+    // Open booking page
+
+    window.location.href = "booking.html";
+
+}
+
+
+// Set minimum date to today
+
+const today =
+    new Date().toISOString().split("T")[0];
+
+document.getElementById("departureDate").min = today;
+
+document.getElementById("returnDate").min = today;
+
+
+// Update return date minimum after departure selection
+
+document.getElementById("departureDate")
+.addEventListener("change", function () {
+
+    document.getElementById("returnDate").min =
+        this.value;
+
+});
+
+</script>
+
+</body>
+
+</html>
